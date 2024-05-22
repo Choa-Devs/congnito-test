@@ -1,0 +1,33 @@
+spring:
+  application:
+    name: spring_security_cognito
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQLDialect
+  datasource:
+    url: jdbc:mysql://database-2-instance-1.c9akcu42w4mv.ap-northeast-2.rds.amazonaws.com/checkmate?serverTimezone=Asia/Seoul&characterEncoding=UTF-8
+    username: admin
+    password: tosky12#
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  security:
+    oauth2:
+      client:
+        registration:
+          cognito:
+            clientId: 3lrlkt6vqmp1qvs9jjgnlul3r8
+            clientSecret: 11ecdtgl268j83uih9tvs925oh6fqa434v1lkt5nticr9jsqbt2o
+            scope: openid,profile,email
+            redirect-uri: http://localhost:8080/login/oauth2/code/cognito
+            clientName: checkmate-cognito-user-pool
+        provider:
+          cognito:
+            issuerUri: https://cognito-idp.ap-northeast-2.amazonaws.com/ap-northeast-2_ylAUYt87s
+            user-name-attribute: username
+aws:
+  cognito:
+    poolId: ap-northeast-2_ylAUYt87s
+    registration:
+      clientId: 3lrlkt6vqmp1qvs9jjgnlul3r8
